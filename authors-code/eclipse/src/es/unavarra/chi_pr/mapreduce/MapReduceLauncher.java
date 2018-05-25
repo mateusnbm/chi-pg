@@ -53,6 +53,20 @@ import es.unavarra.chi_pr.utils.PartialSumsPairsWritable;
  * @author Mikel Elkano Ilintxeta
  * @version 1.0
  */
+
+// hadoop jar chipg.jar es.unavarra.chi_pr.mapreduce.MapReduceLauncher hdfs://localhost:9000 <parameters_file> example/header_example.header example/data_example.data example/
+// hadoop jar chipg.jar es.unavarra.chi_pr.mapreduce.MapReduceLauncher hdfs://localhost:9000 example/header_example.header example/data_example.data example/
+
+// /Users/mateusnbm/hadoop-3.1.0/etc/hadoop
+// /Users/mateusnbm/hadoop-3.1.0/bin/hadoop jar chipg.jar es.unavarra.chi_pr.mapreduce.MapReduceLauncher hdfs://localhost:9000 example/header_example.header example/data_example.data example/
+
+// /Users/mateusnbm/hadoop-3.1.0/etc/hadoop
+// /Users/mateusnbm/hadoop-3.1.0/bin/hadoop jar chipg.jar es.unavarra.chi_pr.mapreduce.MapReduceLauncher hdfs://localhost:9000 example/parameters_example.parameters example/header_example.header example/data_example.data example/
+
+// /user/mateusnbm/example
+// /Users/mateusnbm/hadoop-3.1.0/bin/hadoop jar chipg.jar es.unavarra.chi_pr.mapreduce.MapReduceLauncher hdfs://localhost:9000 /user/mateusnbm/example/parameters_example.parameters /user/mateusnbm/example/header_example.header /user/mateusnbm/example/data_example.data example/
+
+
 public class MapReduceLauncher {
 	
 	private static long startMs, endMs;
@@ -212,11 +226,16 @@ public class MapReduceLauncher {
         /**
          * READ CONFIGURATION FILE
          */
+        
+        // bin/hdfs dfs -put /Users/mateusnbm/Desktop/chipg/example/parameters_example.parameters chipg
+        // bin/hdfs dfs -put etc/hadoop input
+        
         try{
         	Mediator.storeConfigurationParameters(hdfsLocation+"/"+paramsPath);
         }
         catch(Exception e){
-        	System.err.println("ERROR READING CONFIGURATION FILE:\n");
+        	System.err.println(hdfsLocation+"/"+paramsPath);
+        	System.err.println("ERROR READING CONFIGURATION FILE (FUCK):\n");
         	e.printStackTrace();
         	System.exit(-1);
         }
@@ -314,6 +333,9 @@ public class MapReduceLauncher {
      * @throws IOException 
      */
     private static void mergePrototypes() throws IOException {
+    	
+    	System.err.println(Mediator.getHDFSLocation()+Mediator.getOutputPath()+"_TMP");
+    	System.err.println(Mediator.getHDFSLocation()+Mediator.getOutputPrototypesPath());
     	
     	FileSystem fs = FileSystem.get(Mediator.getConfiguration());
     	FileStatus[] status = fs.listStatus(new Path(Mediator.getHDFSLocation()+Mediator.getOutputPath()+"_TMP"));
@@ -413,6 +435,9 @@ public class MapReduceLauncher {
         long seconds = ((elapsed % 3600000) % 60000) / 1000;
         
         try {
+        	
+        	System.err.println(Mediator.getHDFSLocation()+Mediator.getOutputPath()+Mediator.TIME_STATS_DIR);
+        	System.err.println(Mediator.getHDFSLocation()+Mediator.getOutputPath()+"time.txt");
         	
         	FileSystem fs = FileSystem.get(Mediator.getConfiguration());
         	Path timeDirPath = new Path(Mediator.getHDFSLocation()+Mediator.getOutputPath()+Mediator.TIME_STATS_DIR);

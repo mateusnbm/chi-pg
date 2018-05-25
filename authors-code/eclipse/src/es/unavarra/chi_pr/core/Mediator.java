@@ -741,6 +741,8 @@ public class Mediator {
         String buffer = null;
         StringTokenizer st = null;
         
+        System.err.println("^HERE^");
+        
         while ((buffer = br.readLine())!=null){
         	if (!buffer.trim().isEmpty() && buffer.trim().charAt(0) != '*'){
 	            st = new StringTokenizer (buffer, "= ");
