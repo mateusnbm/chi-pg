@@ -135,8 +135,8 @@ def reduce(combined_data, variables, classes, min, aggregation):
 
             # Count the number of instances belonging to the current class.
 
-            filtered = filter(lambda x: x[-1] == class_name, instances)
-            count = len(list(filtered))
+            filtered = list(filter(lambda x: x[-1] == class_name, instances))
+            count = len(filtered)
 
             # Check if the class has the minimum number of required instances.
 
@@ -144,7 +144,7 @@ def reduce(combined_data, variables, classes, min, aggregation):
 
             # Generate a prototype and store it.
 
-            prototype = generate_prototype(variables, instances, count, class_name)
+            prototype = generate_prototype(variables, filtered, count, class_name)
 
             prototypes.append(prototype)
 
