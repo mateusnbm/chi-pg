@@ -6,6 +6,8 @@
 import os
 import random
 
+import algorithms.knn
+
 
 '''
 Parameters.
@@ -13,8 +15,8 @@ Parameters.
 
 folds = 5
 
-data_filename = 'sample-data/example-data.txt'
-header_filename = 'sample-data/example-header.txt'
+data_filename = 'sample-data/poker-data.txt' #example-data.txt'
+header_filename = 'sample-data/poker-header.txt' #example-header.txt'
 
 configurations = [
     (2, 3, 'am'),
@@ -83,7 +85,6 @@ with open(data_filename) as infile:
         instance = lines_buffer[i]
 
         file.write(instance)
-        lines_buffer.remove(instance)
 
 
 '''
@@ -145,6 +146,12 @@ for configuration in configurations:
         argument += training_filename + ' ' + header_filename + ' ' + output_filename
 
         os.system(argument)
+
+
+'''
+'''
+
+# ...
 
 
 '''

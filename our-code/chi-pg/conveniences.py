@@ -57,7 +57,7 @@ def proccess_attribute_line(line_tokens, kfs):
         attr_lower = float(attr_range[0])
         attr_upper = float(attr_range[1])
 
-        if attr_type == "real" or (attr_upper - attr_lower + 1) <= kfs:
+        if attr_type == "real" or (attr_upper - attr_lower + 1) > kfs:
 
             return FuzzyVariable(attr_name, attr_type, attr_lower, attr_upper, kfs)
 
