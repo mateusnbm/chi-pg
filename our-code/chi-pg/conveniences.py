@@ -3,7 +3,25 @@
 #
 
 
+import os
+
 from variables import NominalVariable, FuzzyVariable
+
+
+'''
+'''
+
+def write_prototypes(prototypes, filename):
+
+    # Format prototypes list.
+
+    output = '\n'.join(prototypes)
+
+    # Write formatted prototypes to file.
+
+    file = open(filename, 'w+')
+    file.write(output)
+    file.close()
 
 
 '''
