@@ -65,9 +65,9 @@ def proccess_attribute_line(line_tokens, kfs):
         # than the number of linguistic labels, then build a nominal variable.
 
         attr_values = []
-        attr_nominal_base = str(int(attr_upper) - int(attr_lower) + 1)
+        number_of_values = int(attr_upper) - int(attr_lower) + 1
 
-        for i in range(len(attr_nominal_base)):
+        for i in range(number_of_values):
 
             attr_values.append(str(int(attr_lower)+i))
 
