@@ -1,15 +1,15 @@
 @relation Poker
-@attribute S1 integer[1,4]
-@attribute C1 integer[1,13]
-@attribute S2 integer[1,4]
-@attribute C2 integer[1,13]
-@attribute S3 integer[1,4]
-@attribute C3 integer[1,13]
-@attribute S4 integer[1,4]
-@attribute C4 integer[1,13]
-@attribute S5 integer[1,4]
-@attribute C5 integer[1,13]
+@attribute Atr-0{1, 2, 3, 4}
+@attribute Atr-1 integer[1.0,13.0]
+@attribute Atr-2{1, 2, 3, 4}
+@attribute Atr-3 integer[1.0,13.0]
+@attribute Atr-4{1, 2, 3, 4}
+@attribute Atr-5 integer[1.0,13.0]
+@attribute Atr-6{1, 2, 3, 4}
+@attribute Atr-7 integer[1.0,13.0]
+@attribute Atr-8{1, 2, 3, 4}
+@attribute Atr-9 integer[1.0,13.0]
 @attribute Class{0,1,2,3,4,5,6,7,8,9}
-@inputs S1, C1, S2, C2, S3, C3, S4, C4, S5, C5
+@inputs Atr-0,Atr-1,Atr-2,Atr-3,Atr-4,Atr-5,Atr-6,Atr-7,Atr-8,Atr-9
 @outputs Class
 @numInstancesByClass 12493,10599,1206,513,93,54,36,6,5,5
