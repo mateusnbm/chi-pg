@@ -202,7 +202,7 @@ for configuration in configurations:
 		average_time += time.time() - start_time
 
 	t = (average_time/folds)
-	t = '{:.0f}:{:.0f}:{:.0f}'.format(t // 3600, (t % 3600 // 60), t % 60)
+	t = '{:02.0f}:{:02.0f}:{:02.0f}'.format(t // 3600, (t % 3600 // 60), t % 60)
 
 	output  = 'Configuration '
 	output += str(fs) + 'FS '
