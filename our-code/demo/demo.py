@@ -4,10 +4,10 @@
 
 
 import os
+import sys
 import time
+import math
 import random
-
-import algorithms.knn
 
 
 '''
@@ -16,8 +16,8 @@ Parameters.
 
 folds = 5
 
-data_filename = 'sample-data/poker-data.txt'
-header_filename = 'sample-data/poker-header.txt'
+data_filename = 'sample-data/susy-data.txt'
+header_filename = 'sample-data/susy-header.txt'
 
 data_class_index = 10
 data_nominal_indexes = []
@@ -266,66 +266,10 @@ for k in range(len(configurations)):
 
 rates_file.close()
 
-exit(0)
 
 '''
-Measure accuracies.
+Termination.
 '''
-
-print('Measuring accuracies...')
-print('')
-
-for k in range(len(configurations)):
-
-	average = 0
-
-	fs = configurations[k][0]
-	min = configurations[k][1]
-	aggr = configurations[k][2]
-
-	for i in range(folds):
-
-		testing_set = []
-		training_set = []
-
-		testing_data_file = paths[i][1][0]
-		prototypes_fold_file = open(paths[i][2][k], 'r')
-
-		testing_data_file.seek(0, 0)
-
-		for line in testing_data_file:
-
-			attributes = line[:-1].split(',')
-			nominals_set = [attributes[w] for w in data_nominal_indexes]
-			numericals_set = [float(attributes[w]) for w in data_numerical_indexes]
-
-			testing_set.append([nominals_set, numericals_set, attributes[data_class_index]])
-
-		for line in prototypes_fold_file:
-
-			attributes = line[:-1].split(',')
-			nominals_set = [attributes[w] for w in data_nominal_indexes]
-			numericals_set = [float(attributes[w]) for w in data_numerical_indexes]
-
-			training_set.append([nominals_set, numericals_set, attributes[data_class_index]])
-
-		if len(data_nominal_indexes) > 0:
-
-			print('Databases with nominal attributes are not supported yet.')
-
-		else:
-
-			average += algorithms.knn.knn_accuracy(1, training_set, testing_set)
-
-	output  = 'Configuration '
-	output += str(fs) + 'FS '
-	output += 'min' + str(min) + ' '
-	output += aggr + ': '
-	output += '{:.2f}'.format(average/folds)
-	output += '%'
-
-	print(output)
-
 
 print('')
 print('Done.')
