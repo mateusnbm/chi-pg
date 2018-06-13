@@ -20,7 +20,7 @@ Parameters.
 
 folds = 5
 
-tmp_path = 'tmp-poker/'
+tmp_path = 'tmp/'
 folds_path = tmp_path + 'folds/'
 prototypes_path = tmp_path + 'prototypes/'
 accuracies_path = tmp_path + 'accuracies/'
@@ -29,28 +29,8 @@ data_filename = 'sample-data/poker-data.txt'
 configurations = [
 	(2,  3, 'am'),
 	(2,  5, 'am'),
-	(2, 10, 'am'),
-	(3,  3, 'am'),
-	(3,  5, 'am'),
-	(3, 10, 'am'),
-	(4,  3, 'am'),
-	(4,  5, 'am'),
-	(5,  3, 'am'),
-	(5,  5, 'am'),
-	(7,  3, 'am'),
-	(9,  3, 'am'),
-	(2,  3, 'sam'),
-	(2,  5, 'sam'),
-	(2, 10, 'sam'),
-	(3,  3, 'sam'),
-	(3,  5, 'sam'),
-	(3, 10, 'sam'),
-	(4,  3, 'sam'),
-	(4,  5, 'sam'),
-	(5,  3, 'sam'),
-	(5,  5, 'sam'),
 	(7,  3, 'sam'),
-	(9,  3, 'sam')
+	(9,  3, 'sam'),
 ]
 
 
@@ -163,8 +143,8 @@ for k in range(len(configurations)):
 	output  = 'Configuration '
 	output += str(fs) + 'FS '
 	output += 'min' + str(min) + ' '
-	output += aggr + ': '
-	output += '{:.2f}'.format(average/folds)
+	output += aggr.upper() + ': '
+	output += '{:.2f}'.format((average/folds)*100)
 	output += '%'
 
 	print(output)
